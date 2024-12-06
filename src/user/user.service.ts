@@ -1,11 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { InfraService } from '../infra/service/infra.service';
 
 @Injectable()
 export class UserService {
+  constructor(private readonly infraService: InfraService) {}
+
   create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+    return `ok`;
   }
 
   findAll() {
@@ -17,7 +20,7 @@ export class UserService {
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+    return `This action updates a #${updateUserDto.userId} user`;
   }
 
   remove(id: number) {
